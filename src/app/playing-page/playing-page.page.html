@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center">
+      Skull King Counter
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="row" style="text-align: center">
+      <h1>Round: {{round}}</h1>
+
+    </div>
+    <div class="row">
+      <ion-slides scrollbar="true" (ionSlideDidChange)="slideChanged()" (ionSlideReachStart)="getStart()"
+        (ionSlideReachEnd)="getEnd()">
+        <ion-slide>
+          <ion-list>
+            <ion-item>
+              <ion-label style="text-align: center">Score: {{score}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label style="text-align: center">Bet: {{bet}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label style="text-align: center">Round Score: {{roundScore}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label style="text-align: center">Extra Round Score: {{extra}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-slide>
+        <ion-slide>
+          <ion-list>
+            <ion-item>
+              <ion-label>Score: {{score}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Bet: {{bet}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Round Score: {{roundScore}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="row" style="margin-top:10%;margin-left:45%">
+      <div class="row">
+        <ion-icon name="arrow-dropup-circle" (click)="add()"></ion-icon>
+      </div>
+      <div class="row">
+        <p style="text-align: center;margin-left:-85%">{{state}}</p>
+      </div>
+      <div class="row">
+        <ion-icon name="arrow-dropdown-circle" (click)="substract()"></ion-icon>
+      </div>
+    </div>
+    <div class="row">
+
+      <form action="">
+        <ion-button expand="full" color="dark" (click)="changePlayer()">next</ion-button>
+      </form>
+
+    </div>
+  </div>
+</ion-content>

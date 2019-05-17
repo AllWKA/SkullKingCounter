@@ -1,0 +1,7 @@
+{
+  "name": "SkullKingCounter",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
