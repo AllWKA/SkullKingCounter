@@ -15,9 +15,8 @@ export class HomePage {
   constructor(private navCtrl: NavController, private storage: Storage) { }
 
   start() {
-
+    this.storage.set("numPlayers", this.input.value);
     this.navCtrl.navigateRoot('players-form');
-    // this.storage.set("numPlayers", this.input.value);
   }
 
 }

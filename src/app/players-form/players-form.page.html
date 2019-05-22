@@ -5,5 +5,37 @@
 </ion-header>
 
 <ion-content>
+  <ion-slides pager="true" style="min-height: 1000px ">
 
+    <ion-slide *ngFor="let player of players">
+      <div class="row">
+        <ion-slides scrollbar="true" style="margin-bottom: 20px;">
+          <ion-slide>
+            <img style="max-height: 250px;" src="../../assets/icon/icon1.jpeg">
+          </ion-slide>
+          <ion-slide>
+            <img style="max-height: 250px;" src="../../assets/icon/icon2.jpg">
+          </ion-slide>
+          <ion-slide>
+            <img style="max-height: 250px;" src="../../assets/icon/icon3.jpg">
+          </ion-slide>
+          <ion-slide>
+            <img style="max-height: 250px;" src="../../assets/icon/icon4.jpg">
+          </ion-slide>
+          <ion-slide>
+            <img style="max-height: 250px;" src="../../assets/icon/icon5.jpg">
+          </ion-slide>
+          <ion-slide>
+            <img style="max-height: 250px;" src="../../assets/icon/icon6.jpg">
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div class="row">
+        <h2>Name:</h2>
+        <ion-input placeholder="name" position="fixed"></ion-input>
+      </div>
+
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>
