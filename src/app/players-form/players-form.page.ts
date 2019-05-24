@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-players-form',
@@ -10,8 +10,7 @@ import { IonSlides } from '@ionic/angular';
 })
 export class PlayersFormPage implements OnInit {
   @ViewChild("playerSlides") playerSlides: IonSlides;
-  constructor(private storage: Storage) { }
-
+  constructor(private navCtrl: NavController, private storage: Storage) { }
   players = []
   debug = "none"
 
@@ -30,9 +29,13 @@ export class PlayersFormPage implements OnInit {
   }
 
   savePlayers() {
-    // for (let i = 0; i < this.players.length; i++) {
-    //   document.getElementById("playerSlides").innerHTML += "<ion-slide style='height: 500px;'>< ion - slides ><ion-slide ><h1>img 1 < /h1>< /ion-slide>< ion - slide ><h1>img 2 < /h1>< /ion-slide>< ion - slide ><h1>img 3 < /h1>< /ion-slide>< /ion-slides></ion-slide>"
-    // }
+    var len = document.getElementsByTagName("ion-input").length;
+    for (let i = 0; i < len; i++) {
+      this.players[i].name = document.getElementsByTagName("ion-input").item(i).value;
+      this.debug += "-" + JSON.stringify(this.players[i]);
+    }
+    this.storage.set("players", this.players);
+    this.navCtrl.navigateRoot('playing-page');
   }
 
 }

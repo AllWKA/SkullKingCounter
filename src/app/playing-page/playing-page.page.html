@@ -15,32 +15,22 @@
     <div class="row">
       <ion-slides scrollbar="true" (ionSlideDidChange)="slideChanged()" (ionSlideReachStart)="getStart()"
         (ionSlideReachEnd)="getEnd()">
-        <ion-slide>
+        <ion-slide *ngFor="let player of players">
           <ion-list>
             <ion-item>
-              <ion-label style="text-align: center">Score: {{score}}</ion-label>
+              <ion-label style="text-align: center">Name: {{player.name}}</ion-label>
             </ion-item>
             <ion-item>
-              <ion-label style="text-align: center">Bet: {{bet}}</ion-label>
+              <ion-label style="text-align: center">Score: {{player.score}}</ion-label>
             </ion-item>
             <ion-item>
-              <ion-label style="text-align: center">Round Score: {{roundScore}}</ion-label>
+              <ion-label style="text-align: center">Bet: {{player.bet}}</ion-label>
             </ion-item>
             <ion-item>
-              <ion-label style="text-align: center">Extra Round Score: {{extra}}</ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-slide>
-        <ion-slide>
-          <ion-list>
-            <ion-item>
-              <ion-label>Score: {{score}}</ion-label>
+              <ion-label style="text-align: center">Round Score: {{player.roundScore}}</ion-label>
             </ion-item>
             <ion-item>
-              <ion-label>Bet: {{bet}}</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Round Score: {{roundScore}}</ion-label>
+              <ion-label style="text-align: center">Extra Round Score: {{player.extraRoundScore}}</ion-label>
             </ion-item>
           </ion-list>
         </ion-slide>
