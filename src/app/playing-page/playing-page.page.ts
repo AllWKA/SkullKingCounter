@@ -22,6 +22,7 @@ export class PlayingPagePage implements OnInit {
   state = "Betting";
   getEndSlide = false;
   slideIndex;
+  rounds = [1];
 
   @ViewChild(IonSlides) slide: IonSlides;
 
@@ -99,6 +100,7 @@ export class PlayingPagePage implements OnInit {
     if (this.getEndSlide) {
       this.betting = !this.betting;
       this.changingState();
+      this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
       this.slide.slideTo(0);
       this.getEndSlide = false;
       this.nextRound();
