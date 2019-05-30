@@ -1,12 +1,9 @@
 ion-content {
     --background: url('./img/fondo_menu.png');
     --background-size: cover;
-    border: 9px outset rgb(92, 53, 6);
     font-family: wanted-font;
 }
 ion-input{
-  --background: rgba(92, 53, 6, 0.24);
-  box-shadow: -5px -10px 10px rgb(92, 53, 6);
   font-family: wanted-font;
   margin-top: 4%;
   color: rgb(92, 53, 6);
@@ -32,8 +29,4 @@ img{
 @font-face {
   font-family: wanted-font;
   src: url(../../fonts/dirtyoldtown.ttf);
-}
-
-.border{
-  // border: 25px groove rgb(71, 55, 40);
 }
