@@ -1,0 +1,29 @@
+ion-content {
+    --background: url('../home/img/fondo_menu.png');
+    --background-size: cover;
+    font-family: wanted-font;
+}
+ion-slides{
+    
+    margin-top: 5%;
+}
+ion-input{
+  font-family: wanted-font;
+  margin-top: 4%;
+  color: rgb(49, 29, 4);
+}
+.title{
+  font-family: wanted-font;
+  margin-top: 3%;
+  color: rgb(92, 53, 6);
+  font-size: 20px;
+}
+img{
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.character{
+    // border: 12px groove rgb(85, 69, 49);
+    max-height: 250px;
+}
