@@ -1,22 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title style="text-align: center">
-      Skull King Counter
-    </ion-title>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    <div class="row">
-      <!-- <img src="../../../resources/media/skull.gif" alt=""> -->
+<ion-content fullscrean="true">
+  <div class="ion-padding border">
+    <p style="text-align: center" class="title">
+      Skull King Counter
+    </p>
+    <div class="row" style="text-align: center">
+      <img src="../../assets/icon/skull.jpg" alt="">
     </div>
-    <div class="row" style="margin-top:10%;align-items: center">
-      <label for="" style="text-align:center">Number Players</label>
-      <ion-input color="dark" id="numPlayers" expand="full" clearInput type="number" placeholder=0></ion-input>
+    <div class="row" style="margin-top:3%;">
+      <ion-input id="numPlayers" expand="full" type="number" placeholder=0>
+        <p style="margin-left: 23%">Number of Players </p>
+      </ion-input>
     </div>
     <div class="row">
-      <ion-button expand="full" color="dark" (click)="start()">Start</ion-button>
+      <ion-button expand="full" (click)="start()">Start</ion-button>
     </div>
   </div>
 </ion-content>
