@@ -1,32 +1,42 @@
 <ion-header>
 </ion-header>
 
-<ion-content>
+<ion-content fullscrean="true">
   <ion-title class="title">Wanted</ion-title>
-  <ion-slides pager="true" style="min-height: 400px;">
+  <ion-slides color="dark" pager="true" style="min-height: 420px;">
     <ion-slide *ngFor="let player of players">
       <div class="row">
-        <ion-slides scrollbar="true" style="margin-bottom:20px;max-width: 300px;">
-          <ion-slide>
-            <img class="character" src="../../assets/icon/icon1.jpeg">
-          </ion-slide>
-          <ion-slide>
-            <img class="character" src="../../assets/icon/icon2.jpg">
-          </ion-slide>
-          <ion-slide>
-            <img class="character" src="../../assets/icon/icon3.jpg">
-          </ion-slide>
-          <ion-slide>
-            <img class="character" src="../../assets/icon/icon4.jpg">
-          </ion-slide>
-          <ion-slide>
-            <img class="character" src="../../assets/icon/icon5.jpg">
-          </ion-slide>
-          <ion-slide>
-            <img class="character" src="../../assets/icon/icon6.jpg">
-          </ion-slide>
-        </ion-slides>
-        <ion-input placeholder="name" position="fixed"></ion-input>
+        <div class="row">
+          <ion-slides scrollbar="true" style="margin-bottom:20px;max-width: 300px;">
+            <ion-slide>
+              <img class="character" src="../../assets/icon/icon1.jpeg">
+            </ion-slide>
+            <ion-slide>
+              <img class="character" src="../../assets/icon/icon2.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img class="character" src="../../assets/icon/icon3.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img class="character" src="../../assets/icon/icon4.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img class="character" src="../../assets/icon/icon5.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img class="character" src="../../assets/icon/icon6.jpg">
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <div class="row">
+          <ion-title class="title2" style="text-decoration-style: double;text-decoration: underline;">DEAD OR ALIVE
+          </ion-title>
+          <ion-input class="title2" placeholder="name" position="fixed">
+          </ion-input>
+          <ion-title class="title2">
+            <ion-icon name="logo-yen"></ion-icon>3.0000.000
+          </ion-title>
+        </div>
       </div>
     </ion-slide>
   </ion-slides>
