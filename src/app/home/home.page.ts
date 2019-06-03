@@ -15,8 +15,12 @@ export class HomePage {
   constructor(private navCtrl: NavController, private storage: Storage) { }
 
   async start() {
-    await this.storage.set("numPlayers", this.input.value);
-    this.navCtrl.navigateRoot('players-form');
+    if (parseInt(this.input.value) > 0 && parseInt(this.input.value) <= 6) {
+      await this.storage.set("numPlayers", this.input.value);
+      this.navCtrl.navigateRoot('players-form');
+    } else {
+      alert("number not valid")
+    }
   }
 
 }
