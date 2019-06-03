@@ -10,28 +10,23 @@ import { Storage } from '@ionic/storage';
 export class PlayingPagePage implements OnInit {
   players = []
   debug = "none";
-  round = 0;
+  round = 1;
   betting = true;
   state = "Betting";
   getEndSlide = false;
   slideIndex;
-  rounds = [1];
+  rounds = [0, 1];
+  activeIndex = 0;
+  lasIndex = 1;
 
   constructor(private storage: Storage) { }
 
   ngOnInit() {
     this.storage.get('players').then(async (players) => {
       this.players = players
-      var len = document.getElementsByTagName("img").length;
-      // this.debug += document.getElementsByTagName("img").length;
-      // for (let i = 0; i < len; i++) {
-      //   this.debug += len;
-      // }
+      // var len = document.getElementsByTagName("img").length;
     });
-    var len = document.getElementsByTagName("img").length;
-    for (let i = 0; i < len; i++) {
-      this.debug += document.getElementsByClassName("characterPlayable").item(i);
-    }
+    this.start();
   }
 
 
@@ -41,24 +36,38 @@ export class PlayingPagePage implements OnInit {
   getEnd() {
     this.getEndSlide = true;
   }
-  getStart() {
-    // this.getEndSlide = false;
+  async start() {
+
   }
 
   async slideChanged() {
-    var index = await this.slide.getActiveIndex()
-    var endIndex = await this.slide.length()
-    if (index != endIndex - 1) {
-      this.getEndSlide = false;
-    }
+    // var index = await this.slide.getActiveIndex()
+    // var endIndex = await this.slide.length()
+    // if (index != endIndex - 1) {
+    //   this.getEndSlide = false;
+    // }
   }
 
-  changePlayer() {
-    this.actualIndex();
+  async changePlayer() {
+    this.activeIndex = await this.slide.getActiveIndex();
+    this.lasIndex = await this.slide.length();
+    this.debug = this.activeIndex + "-" + this.lasIndex;
     if (this.betting == false) {
       this.setScore();
     }
-    this.slide.slideNext();
+    if (this.activeIndex == this.lasIndex - 1) {
+      this.betting = !this.betting;
+      this.changingState();
+      if (this.betting == false) {
+        this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
+      }
+      this.slide.slideTo(0);
+      this.getEndSlide = false;
+      this.nextRound();
+    } else {
+      this.activeIndex++;
+      this.slide.slideTo(this.activeIndex);
+    }
     this.isEnd();
   }
 
@@ -87,15 +96,20 @@ export class PlayingPagePage implements OnInit {
     })
   }
 
-  isEnd() {
-    if (this.getEndSlide) {
-      this.betting = !this.betting;
-      this.changingState();
-      this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
-      this.slide.slideTo(0);
-      this.getEndSlide = false;
-      this.nextRound();
-    }
+  async isEnd() {
+    // if (this.getEndSlide) {
+    //   this.betting = !this.betting;
+    //   this.changingState();
+    //   if (this.betting == false) {
+    //     this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
+    //   }
+    //   this.slide.slideTo(0);
+    //   this.getEndSlide = false;
+    //   this.nextRound();
+    // }
+
+
+    // this.debug += activeIndex + "-" + lasIndex;
   }
 
   actualIndex() {
