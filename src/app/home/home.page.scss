@@ -1,6 +1,6 @@
 ion-content {
     --background: url('./img/fondo_menu.png');
-    --background-size: cover;
+    --background-size: fill;
     font-family: wanted-font;
 }
 ion-input{
@@ -22,9 +22,14 @@ ion-button{
 }
 
 img{
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 70%;
+  max-height: 70%;
   background-size: cover;
+}
+
+.logo{
+  max-width: 110%;
+  max-height: 110%;
 }
 
 @font-face {
