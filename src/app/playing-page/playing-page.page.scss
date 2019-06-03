@@ -1,0 +1,45 @@
+ion-content {
+    --background: url('../home/img/fondo_menu.png');
+    --background-size: cover;
+    font-family: wanted-font;
+    text-align: center;
+}
+ion-slides{
+    margin-top: 1%;
+    --bullet-background:rgb(49, 29, 4);
+    --bullet-background-active: rgb(92, 53, 6);
+    min-height: 150px ;
+}
+ion-input{
+  font-family: wanted-font;
+  margin-top: 4%;
+  color: rgb(49, 29, 4);
+}
+.title{
+  font-family: wanted-font;
+  margin-top: 3%;
+  color: rgb(92, 53, 6);
+  font-size: 40px;
+  text-decoration: underline;
+}
+.name{
+  font-family: wanted-font;
+  margin-top: 3%;
+  color: rgb(92, 53, 6);
+  font-size: 50px;
+}
+.title2{
+  font-family: wanted-font;
+  color: rgb(92, 53, 6);
+  font-size: 24px;
+  text-align: center;
+}
+img{
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: cover;
+}
+.characterPlayable{
+    border: 7px solid rgb(85, 69, 49);
+    max-height: 300px;
+}

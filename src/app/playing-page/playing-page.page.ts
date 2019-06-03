@@ -9,20 +9,31 @@ import { Storage } from '@ionic/storage';
 })
 export class PlayingPagePage implements OnInit {
   players = []
-  constructor(private storage: Storage) { }
-
-  ngOnInit() {
-    this.storage.get('players').then((players) => {
-      this.players = players;
-    });
-  }
-
-  round = 1;
+  debug = "none";
+  round = 0;
   betting = true;
   state = "Betting";
   getEndSlide = false;
   slideIndex;
   rounds = [1];
+
+  constructor(private storage: Storage) { }
+
+  ngOnInit() {
+    this.storage.get('players').then(async (players) => {
+      this.players = players
+      var len = document.getElementsByTagName("img").length;
+      // this.debug += document.getElementsByTagName("img").length;
+      // for (let i = 0; i < len; i++) {
+      //   this.debug += len;
+      // }
+    });
+    var len = document.getElementsByTagName("img").length;
+    for (let i = 0; i < len; i++) {
+      this.debug += document.getElementsByClassName("characterPlayable").item(i);
+    }
+  }
+
 
   @ViewChild(IonSlides) slide: IonSlides;
 
@@ -52,26 +63,6 @@ export class PlayingPagePage implements OnInit {
   }
 
   setScore() {
-    // // si apuestas 0
-    // if (this.bet == 0) {
-    //   // si has apostado 0 y has fallado
-    //   if (this.bet - this.roundScore != 0) {
-    //     this.score += -(this.round * 10)
-    //   } else {
-    //     this.score += this.round * 10
-    //   }
-    //   //si has apostado algo  
-    // } else {
-    //   //si has fallado al apostar
-    //   if (this.bet - this.roundScore != 0) {
-    //     this.score += -10 * (Math.abs(this.bet - this.roundScore))
-    //   } else {
-    //     this.score += this.bet * 20 + this.extra;
-    //   }
-    // }
-    // this.bet = 0;
-    // this.roundScore = 0;
-
     //TODO: ARREGLA ESTA MIERDA JODIO MATADO
     this.slide.getActiveIndex().then(i => {
       // si apuestas 0
