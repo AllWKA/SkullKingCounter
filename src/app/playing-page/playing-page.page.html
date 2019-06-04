@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="row">
-      <ion-button *ngFor="let round of rounds" expand="" color="dark" (click)="changePlayer()">
+      <ion-button *ngFor="let round of rounds" expand="" color="dark" (click)="changePlayer(round)">
         {{round}}
       </ion-button>
       <p>{{debug}}</p>

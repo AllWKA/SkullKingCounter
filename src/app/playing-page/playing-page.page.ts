@@ -9,11 +9,10 @@ import { Storage } from '@ionic/storage';
 })
 export class PlayingPagePage implements OnInit {
   players = []
-  debug = "none";
+  debug = "aaaaa ";
   round = 1;
   betting = true;
   state = "Betting";
-  getEndSlide = false;
   slideIndex;
   rounds = [0, 1];
   activeIndex = 0;
@@ -26,49 +25,37 @@ export class PlayingPagePage implements OnInit {
       this.players = players
       // var len = document.getElementsByTagName("img").length;
     });
-    this.start();
   }
 
 
   @ViewChild(IonSlides) slide: IonSlides;
 
 
-  getEnd() {
-    this.getEndSlide = true;
-  }
-  async start() {
-
-  }
-
-  async slideChanged() {
-    // var index = await this.slide.getActiveIndex()
-    // var endIndex = await this.slide.length()
-    // if (index != endIndex - 1) {
-    //   this.getEndSlide = false;
-    // }
-  }
-
-  async changePlayer() {
+  async changePlayer(event) {
     this.activeIndex = await this.slide.getActiveIndex();
     this.lasIndex = await this.slide.length();
-    this.debug = this.activeIndex + "-" + this.lasIndex;
+    this.debug += event + "aa";
+    this.debug += "activeIndex:" + this.activeIndex + "<-->" + "lasIndex:" + this.lasIndex;
     if (this.betting == false) {
+      this.debug += "<-->setting Score";
       this.setScore();
+    } else {
+      this.debug += "<-->betting";
+      this.players[this.activeIndex].bet = event
     }
     if (this.activeIndex == this.lasIndex - 1) {
+      this.debug += "<-->llego al final";
       this.betting = !this.betting;
+      this.debug += "<-->bett:" + this.betting;
       this.changingState();
-      if (this.betting == false) {
-        this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
-      }
+      this.debug += "<-->yendo al principio";
       this.slide.slideTo(0);
-      this.getEndSlide = false;
       this.nextRound();
     } else {
+      this.debug += "<-->llendo al siguiente";
       this.activeIndex++;
       this.slide.slideTo(this.activeIndex);
     }
-    this.isEnd();
   }
 
   setScore() {
@@ -76,6 +63,7 @@ export class PlayingPagePage implements OnInit {
     this.slide.getActiveIndex().then(i => {
       // si apuestas 0
       if (this.players[i].bet == 0) {
+        this.debug += "<-->apuesto 0";
         // si has apostado 0 y has fallado
         if (this.players[i].bet - this.players[i].roundScore != 0) {
           this.players[i].score += -(this.players[i].round * 10)
@@ -96,22 +84,6 @@ export class PlayingPagePage implements OnInit {
     })
   }
 
-  async isEnd() {
-    // if (this.getEndSlide) {
-    //   this.betting = !this.betting;
-    //   this.changingState();
-    //   if (this.betting == false) {
-    //     this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
-    //   }
-    //   this.slide.slideTo(0);
-    //   this.getEndSlide = false;
-    //   this.nextRound();
-    // }
-
-
-    // this.debug += activeIndex + "-" + lasIndex;
-  }
-
   actualIndex() {
     this.slide.getActiveIndex().then(i => {
       this.slideIndex = i;
@@ -120,6 +92,7 @@ export class PlayingPagePage implements OnInit {
 
   nextRound() {
     if (this.betting == true) {
+      this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
       this.round++;
     }
   }
@@ -142,19 +115,5 @@ export class PlayingPagePage implements OnInit {
     })
   }
 
-  substract() {
-    this.slide.getActiveIndex().then(i => {
-      if (this.betting) {
-        this.players[i].bet--;
-        if (this.players[i].bet < 0) {
-          this.players[i].bet = 0;
-        }
-      } else {
-        this.players[i].roundScore--;
-        if (this.players[i].roundScore < 0) {
-          this.players[i].roundScore = 0;
-        }
-      }
-    })
-  }
+
 }
