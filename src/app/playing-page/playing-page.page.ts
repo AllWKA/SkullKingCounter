@@ -34,51 +34,50 @@ export class PlayingPagePage implements OnInit {
   async changePlayer(event) {
     this.activeIndex = await this.slide.getActiveIndex();
     this.lasIndex = await this.slide.length();
-    this.debug += event + "aa";
-    this.debug += "activeIndex:" + this.activeIndex + "<-->" + "lasIndex:" + this.lasIndex;
     if (this.betting == false) {
-      this.debug += "<-->setting Score";
-      this.setScore();
+      this.setScore(event);
     } else {
-      this.debug += "<-->betting";
       this.players[this.activeIndex].bet = event
     }
     if (this.activeIndex == this.lasIndex - 1) {
-      this.debug += "<-->llego al final";
       this.betting = !this.betting;
-      this.debug += "<-->bett:" + this.betting;
       this.changingState();
-      this.debug += "<-->yendo al principio";
       this.slide.slideTo(0);
       this.nextRound();
     } else {
-      this.debug += "<-->llendo al siguiente";
       this.activeIndex++;
+      await this.sleep(500);
       this.slide.slideTo(this.activeIndex);
     }
   }
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-  setScore() {
+  async setScore(playingScore: number) {
     //TODO: ARREGLA ESTA MIERDA JODIO MATADO
-    this.slide.getActiveIndex().then(i => {
-      // si apuestas 0
+    this.slide.getActiveIndex().then(async i => {
+
       if (this.players[i].bet == 0) {
-        this.debug += "<-->apuesto 0";
-        // si has apostado 0 y has fallado
-        if (this.players[i].bet - this.players[i].roundScore != 0) {
-          this.players[i].score += -(this.players[i].round * 10)
+
+        if (this.players[i].bet == playingScore) {
+
+          this.players[i].score += this.round * 10;
         } else {
-          this.players[i].score += this.round * 10
+          this.players[i].score -= this.round * (10);
         }
-        //si has apostado algo  
       } else {
-        //si has fallado al apostar
-        if (this.players[i].bet - this.players[i].roundScore != 0) {
-          this.players[i].score += -10 * (Math.abs(this.players[i].bet - this.players[i].roundScore))
+
+        if (this.players[i].bet == playingScore) {
+
+          this.players[i].score += (playingScore * 20) //"add extra"
         } else {
-          this.players[i].score += this.players[i].bet * 20 + this.players[i].extra;
+
+          this.players[i].score -= Math.abs((this.players[i].bet - playingScore)) * 10
         }
       }
+      this.debug = "reinicio";
+      await this.sleep(1000);
       this.players[i].bet = 0;
       this.players[i].roundScore = 0;
     })
