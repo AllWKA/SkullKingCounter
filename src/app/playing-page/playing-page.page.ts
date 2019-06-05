@@ -76,8 +76,7 @@ export class PlayingPagePage implements OnInit {
           this.players[i].score -= Math.abs((this.players[i].bet - playingScore)) * 10
         }
       }
-      this.debug = "reinicio";
-      await this.sleep(1000);
+
       this.players[i].bet = 0;
       this.players[i].roundScore = 0;
     })
