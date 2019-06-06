@@ -34,11 +34,22 @@ export class PlayingPagePage implements OnInit {
   async changePlayer(event) {
     this.activeIndex = await this.slide.getActiveIndex();
     this.lasIndex = await this.slide.length();
+    this.checkPoint(event);
+
+
+  }
+
+  checkPoint(score) {
+    this.debug = score;
     if (this.betting == false) {
-      this.setScore(event);
+      this.setScore(score);
     } else {
-      this.players[this.activeIndex].bet = event
+      this.players[this.activeIndex].bet = score
+      this.slideTo();
     }
+  }
+
+  async slideTo() {
     if (this.activeIndex == this.lasIndex - 1) {
       this.betting = !this.betting;
       this.changingState();
@@ -50,6 +61,7 @@ export class PlayingPagePage implements OnInit {
       this.slide.slideTo(this.activeIndex);
     }
   }
+
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -76,7 +88,7 @@ export class PlayingPagePage implements OnInit {
           this.players[i].score -= Math.abs((this.players[i].bet - playingScore)) * 10
         }
       }
-
+      this.slideTo();
       this.players[i].bet = 0;
       this.players[i].roundScore = 0;
     })
