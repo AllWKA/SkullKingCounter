@@ -1,5 +1,5 @@
 <ion-header>
-  
+
 </ion-header>
 
 <ion-content>
@@ -12,9 +12,9 @@
         (ionSlideReachEnd)="getEnd()">
         <ion-slide *ngFor="let player of players">
           <div class="row">
-            <div class="row">
-              <img class="characterPlayable" src="../../assets/icon/icon1.jpeg">
-            </div>
+            <ion-img [src]="player.img" class="img-character"></ion-img>
+          </div>
+          <div class="row">
             <ion-title class="name" style="text-align: center">{{player.name}}</ion-title>
             <ion-title class="title2" style="text-align: center">
               Bet:
@@ -41,7 +41,6 @@
       <ion-button *ngFor="let round of rounds" expand="" color="dark" (click)="changePlayer(round)">
         {{round}}
       </ion-button>
-      <p>{{debug}}</p>
     </div>
   </div>
 </ion-content>

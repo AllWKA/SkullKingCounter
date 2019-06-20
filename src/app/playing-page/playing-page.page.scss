@@ -4,6 +4,16 @@ ion-content {
     font-family: wanted-font;
     text-align: center;
 }
+img-character{
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.alert-fixed{
+  --background: url('../home/img/fondo_menu.png');
+  --background-size: cover;
+  font-family: wanted-font;
+  text-align: center;
+}
 ion-slides{
     margin-top: 1%;
     --bullet-background:rgb(49, 29, 4);

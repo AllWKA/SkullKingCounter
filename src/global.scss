@@ -9,3 +9,14 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@font-face {
+  font-family: wanted-font;
+  src: url(./fonts/dirtyoldtown.ttf);
+}
+
+ion-alert
+{
+  --background: url('./app/home/img/fondo_menu.png')!important;
+  font-family: wanted-font!important;
+}

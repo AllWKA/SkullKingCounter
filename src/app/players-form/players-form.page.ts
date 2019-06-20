@@ -32,6 +32,8 @@ export class PlayersFormPage implements OnInit {
     var len = document.getElementsByTagName("ion-input").length;
     for (let i = 0; i < len; i++) {
       this.players[i].name = document.getElementsByTagName("ion-input").item(i).value;
+      document.getElementsByClassName
+      this.players[i].img = "../../assets/icon/icon1.jpeg";
       this.debug += "-" + JSON.stringify(this.players[i]);
     }
     this.storage.set("players", this.players);

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core'
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-playing-page',
   templateUrl: './playing-page.page.html',
@@ -9,7 +10,6 @@ import { Storage } from '@ionic/storage';
 })
 export class PlayingPagePage implements OnInit {
   players = []
-  debug = "aaaaa ";
   round = 1;
   betting = true;
   state = "Betting";
@@ -17,13 +17,13 @@ export class PlayingPagePage implements OnInit {
   rounds = [0, 1];
   activeIndex = 0;
   lasIndex = 1;
+  imgCode = "../../assets/icon/icon1.jpeg"
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private alertController: AlertController) { }
 
   ngOnInit() {
     this.storage.get('players').then(async (players) => {
       this.players = players
-      // var len = document.getElementsByTagName("img").length;
     });
   }
 
@@ -32,15 +32,13 @@ export class PlayingPagePage implements OnInit {
 
 
   async changePlayer(event) {
+
     this.activeIndex = await this.slide.getActiveIndex();
     this.lasIndex = await this.slide.length();
     this.checkPoint(event);
-
-
   }
 
-  checkPoint(score) {
-    this.debug = score;
+  async checkPoint(score) {
     if (this.betting == false) {
       this.setScore(score);
     } else {
@@ -53,13 +51,27 @@ export class PlayingPagePage implements OnInit {
     if (this.activeIndex == this.lasIndex - 1) {
       this.betting = !this.betting;
       this.changingState();
+      await this.sleep(1000);
       this.slide.slideTo(0);
       this.nextRound();
     } else {
       this.activeIndex++;
-      await this.sleep(500);
+      // this.showAlert();
+      await this.sleep(1000);
       this.slide.slideTo(this.activeIndex);
     }
+  }
+
+  async showAlert(header, subHeader, message) {
+    let alert = await this.alertController.create({
+      header: header,
+      subHeader: subHeader,
+      message: message
+    });
+    alert.present();
+    setTimeout(() => {
+      alert.dismiss();
+    }, 1000);
   }
 
   sleep(ms) {
@@ -67,7 +79,6 @@ export class PlayingPagePage implements OnInit {
   }
 
   async setScore(playingScore: number) {
-    //TODO: ARREGLA ESTA MIERDA JODIO MATADO
     this.slide.getActiveIndex().then(async i => {
 
       if (this.players[i].bet == 0) {
@@ -102,6 +113,7 @@ export class PlayingPagePage implements OnInit {
 
   nextRound() {
     if (this.betting == true) {
+      this.showAlert("ronda: " + this.round, "", "");
       this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
       this.round++;
     }
