@@ -17,11 +17,15 @@ export class PlayingPagePage implements OnInit {
   rounds = [0, 1];
   activeIndex = 0;
   lasIndex = 1;
-  imgCode = "../../assets/icon/icon1.jpeg"
+  playingound = new Audio();
+  imgCode = "../../assets/icon/icon1.jpeg";
 
   constructor(private storage: Storage, private alertController: AlertController) { }
 
   ngOnInit() {
+    this.playingound.src = "../assets/sounds/playing.mp3";
+    this.playingound.load();
+    this.playingound.play();
     this.storage.get('players').then(async (players) => {
       this.players = players
     });
@@ -56,7 +60,6 @@ export class PlayingPagePage implements OnInit {
       this.nextRound();
     } else {
       this.activeIndex++;
-      // this.showAlert();
       await this.sleep(1000);
       this.slide.slideTo(this.activeIndex);
     }
@@ -66,7 +69,7 @@ export class PlayingPagePage implements OnInit {
     let alert = await this.alertController.create({
       header: header,
       subHeader: subHeader,
-      message: message
+      message: "<p class='alert'> " + message + " </p>"
     });
     alert.present();
     setTimeout(() => {
@@ -86,6 +89,7 @@ export class PlayingPagePage implements OnInit {
         if (this.players[i].bet == playingScore) {
 
           this.players[i].score += this.round * 10;
+          this.playSound("coin");
         } else {
           this.players[i].score -= this.round * (10);
         }
@@ -94,6 +98,7 @@ export class PlayingPagePage implements OnInit {
         if (this.players[i].bet == playingScore) {
 
           this.players[i].score += (playingScore * 20) //"add extra"
+          this.playSound("coin");
         } else {
 
           this.players[i].score -= Math.abs((this.players[i].bet - playingScore)) * 10
@@ -105,6 +110,17 @@ export class PlayingPagePage implements OnInit {
     })
   }
 
+  playSound(sound) {
+    let audio = new Audio();
+    switch (sound) {
+      case "coin":
+        audio.src = "../assets/sounds/coin.wav";
+        audio.load();
+        audio.play();
+        break;
+    }
+  }
+
   actualIndex() {
     this.slide.getActiveIndex().then(i => {
       this.slideIndex = i;
@@ -113,7 +129,7 @@ export class PlayingPagePage implements OnInit {
 
   nextRound() {
     if (this.betting == true) {
-      this.showAlert("ronda: " + this.round, "", "");
+      this.showAlert("ronda: " + (this.round + 1), "", "");
       this.rounds.push(this.rounds[this.rounds.length - 1] + 1);
       this.round++;
     }
@@ -128,6 +144,7 @@ export class PlayingPagePage implements OnInit {
   }
 
   add() {
+    this.playSound("coin");
     this.slide.getActiveIndex().then(i => {
       if (this.betting) {
         this.players[i].bet++;

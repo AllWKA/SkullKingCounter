@@ -7,26 +7,17 @@
     <ion-slide *ngFor="let player of players">
       <div class="row">
         <div class="row">
-          <ion-slides scrollbar="true" style="margin-bottom:20px;max-width: 300px;">
-            <ion-slide>
-              <img class="character" src="../../assets/icon/icon1.jpeg">
-            </ion-slide>
-            <ion-slide>
-              <img class="character" src="../../assets/icon/icon2.jpg">
-            </ion-slide>
-            <ion-slide>
-              <img class="character" src="../../assets/icon/icon3.jpg">
-            </ion-slide>
-            <ion-slide>
-              <img class="character" src="../../assets/icon/icon4.jpg">
-            </ion-slide>
-            <ion-slide>
-              <img class="character" src="../../assets/icon/icon5.jpg">
-            </ion-slide>
-            <ion-slide>
-              <img class="character" src="../../assets/icon/icon6.jpg">
-            </ion-slide>
-          </ion-slides>
+          <img class="logo" src="../../assets/icon/skull.gif" alt="">
+          <ion-select placeholder="Character">
+            <ion-select-option value="f">
+              <ion-item>
+                name1
+              </ion-item>
+            </ion-select-option>
+            <ion-select-option value="m">
+              name2
+            </ion-select-option>
+          </ion-select>
         </div>
         <div class="row">
           <ion-title class="title2" style="text-decoration-style: double;text-decoration: underline;">
@@ -45,3 +36,24 @@
     <img (click)="savePlayers()" src="../../assets/icon/continuar.gif" alt="">
   </div>
 </ion-content>
+
+<!-- <ion-slides scrollbar="true" style="margin-bottom:20px;max-width: 300px;">
+  <ion-slide>
+    <img class="character" src="../../assets/icon/icon1.jpeg">
+  </ion-slide>
+  <ion-slide>
+    <img class="character" src="../../assets/icon/icon2.jpg">
+  </ion-slide>
+  <ion-slide>
+    <img class="character" src="../../assets/icon/icon3.jpg">
+  </ion-slide>
+  <ion-slide>
+    <img class="character" src="../../assets/icon/icon4.jpg">
+  </ion-slide>
+  <ion-slide>
+    <img class="character" src="../../assets/icon/icon5.jpg">
+  </ion-slide>
+  <ion-slide>
+    <img class="character" src="../../assets/icon/icon6.jpg">
+  </ion-slide>
+</ion-slides> -->

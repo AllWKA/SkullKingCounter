@@ -10,12 +10,16 @@ import { IonSlides, NavController } from '@ionic/angular';
 })
 export class PlayersFormPage implements OnInit {
   @ViewChild("playerSlides") playerSlides: IonSlides;
+  audio = new Audio();
   constructor(private navCtrl: NavController, private storage: Storage) { }
   players = []
   debug = "none"
 
   ngOnInit() {
 
+    this.audio.src = "../assets/sounds/form.mp3";
+    this.audio.load();
+    this.audio.play();
     this.storage.get('numPlayers').then(async (numPlayers) => {
 
       await new Promise((res, rej) => {
@@ -37,6 +41,7 @@ export class PlayersFormPage implements OnInit {
       this.debug += "-" + JSON.stringify(this.players[i]);
     }
     this.storage.set("players", this.players);
+    this.audio.pause();
     this.navCtrl.navigateRoot('playing-page');
   }
 

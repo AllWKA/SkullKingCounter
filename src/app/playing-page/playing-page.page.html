@@ -11,10 +11,11 @@
       <ion-slides scrollbar="true" (ionSlideDidChange)="slideChanged()" (ionSlideReachStart)="getStart()"
         (ionSlideReachEnd)="getEnd()">
         <ion-slide *ngFor="let player of players">
+
           <div class="row">
-            <ion-img [src]="player.img" class="img-character"></ion-img>
-          </div>
-          <div class="row">
+            <div class="row">
+              <ion-img [src]="player.img" class="characterPlayable img-character"></ion-img>
+            </div>
             <ion-title class="name" style="text-align: center">{{player.name}}</ion-title>
             <ion-title class="title2" style="text-align: center">
               Bet:
