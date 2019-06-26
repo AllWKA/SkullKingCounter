@@ -115,6 +115,7 @@ export class PlayingPagePage implements OnInit {
     switch (sound) {
       case "coin":
         audio.src = "../assets/sounds/coin.wav";
+        audio.volume = 0.5;
         audio.load();
         audio.play();
         break;
