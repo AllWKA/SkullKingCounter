@@ -1,7 +1,5 @@
 {
-  "name": "SkullKingCounter",
-  "integrations": {
-    "cordova": {}
-  },
+  "name": "skull-king-counter",
+  "integrations": {},
   "type": "angular"
 }

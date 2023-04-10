@@ -1,20 +1,20 @@
-<ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
-<ion-content fullscrean="true">
-  <div class="ion-padding border">
-    <p style="text-align: center" class="title">
-      Skull King Counter
-    </p>
-    <div class="row" style="text-align: center">
-      <img class="logo" src="../../assets/icon/skull.gif" alt="">
-    </div>
-    <div class="row" style="margin-top:3%;">
-      <ion-input id="numPlayers" expand="full" type="number" placeholder=0>
-        <p style="margin-left: 23%">Number of Players </p>
-      </ion-input>
-    </div>
-    <div class="row" style="text-align: center">
-      <img (click)="start()" src="../../assets/icon/continuar.gif" alt="">
-    </div>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </ion-content>
