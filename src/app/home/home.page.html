@@ -1,20 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ion-padding border">
+    <p style="text-align: center" class="title">
+      Skull King Counter
+    </p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="row" style="text-align: center">
+      <img class="logo" src="../../assets/icon/skull.gif" alt="">
+    </div>
+
+    <div class="row" style="margin-top:3%;">
+      <ion-input type="number" [value]="numPlayers" (ionChange)="updateNumPlayers($event)">
+        <p style="margin-left: 23%">Number of Players </p>
+      </ion-input>
+
+      <p class="error-message" *ngIf="wrongNumPlayers">Invalid number of players <br> You need at least 2</p>
+    </div>
+
+    <div class="row" style="text-align: center" (click)="start()">
+      <img src="../../assets/icon/continuar.gif" alt="">
+    </div>
   </div>
 </ion-content>

@@ -1,27 +1,40 @@
-#container {
+ion-content {
+  --background: url("/assets/icon/fondo_menu.png");
+  --background-size: fill;
+  font-family: wanted-font;
+}
+
+ion-input {
+  font-family: wanted-font;
+  margin-top: 4%;
+  color: var(--text-color);
+}
+
+ion-button {
+  background-color: rgba(92, 53, 6, 0.24);
+  color: rgb(85, 69, 49);
+}
+
+.error-message {
+  font-size: 10px;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  color: rgb(85, 62, 49);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.title {
+  font-family: wanted-font;
+  margin-top: 3%;
+  font-size: 40px;
+  color: var(--text-color);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+img {
+  max-width: 70%;
+  max-height: 70%;
+  background-size: cover;
 }
 
-#container a {
-  text-decoration: none;
+.logo {
+  max-width: 110%;
+  max-height: 110%;
 }
