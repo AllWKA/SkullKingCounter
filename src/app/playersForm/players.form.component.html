@@ -1,0 +1,49 @@
+<ion-content fullscrean="true">
+  <ion-title class="title">Wanted</ion-title>
+
+  <div style="height: 80%; margin-top: 5%">
+    <div style="height: 90%; transition: all 1s linear;"
+         *ngFor="let player, let i = index of players"
+         [ngClass]="showPlayer(i)?'show-player':'hide-player'"
+    >
+      <div class="header-form">
+        <div style="height: 100%; width: 100%">
+          <img src="{{'assets/icon/' + players[i].skin + '.gif'}}" alt="">
+        </div>
+
+        <div style="max-width: 90%">
+          <ion-select interface="popover" class="character-select" label="" (ionChange)="changeSkullPath($event, i)">
+            <ion-select-option *ngFor="let skull of skulls">
+              <ion-item>{{skull}}</ion-item>
+            </ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="name-container">
+        <ion-title class="dead-or-alive-section-text">
+          Dead or Alive
+        </ion-title>
+
+        <input class="dead-or-alive-section-text name-input" required="true" placeholder="name" type="text" (change)="setPlayerName($event, i)"/>
+
+        <ion-title class="dead-or-alive-section-text">
+          <ion-icon name="logo-yen"></ion-icon>
+          3000000
+        </ion-title>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button (click)="nextPlayer()" style="height: 50px; width: 50px;background-color: transparent">
+        <img src="/assets/icon/prev.svg" alt="">
+      </button>
+      <button style="background-color: transparent; height: 100px; width: 100px;">
+        <img src="/assets/icon/continuar.gif" alt="">
+      </button>
+      <button (click)="prevPlayer()" style="height: 50px; width: 50px;background-color: transparent">
+        <img src="/assets/icon/next.svg" alt="">
+      </button>
+    </div>
+  </div>
+</ion-content>

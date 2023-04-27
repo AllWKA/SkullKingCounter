@@ -2,6 +2,7 @@ import {Component} from '@angular/core'
 import {IonicModule} from '@ionic/angular'
 import {Router} from '@angular/router'
 import {NgIf} from '@angular/common'
+import {ConfigService} from "../config.service";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomePage {
 
   wrongNumPlayers = false
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private config: ConfigService) {
   }
 
   async ngOnInit() {
@@ -29,10 +30,12 @@ export class HomePage {
   }
 
   start() {
-    if (this.numPlayers > 2 && this.numPlayers <= 6) {
+    if (this.numPlayers >= 2 && this.numPlayers <= 6) {
       this.audio.pause()
 
-      this.router.navigate(['player-form', this.numPlayers])
+      this.config.numPlayers = this.numPlayers
+
+      this.router.navigate(['player-form'])
     } else {
       this.wrongNumPlayers = true
     }

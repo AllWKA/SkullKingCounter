@@ -24,3 +24,15 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+@font-face {
+  font-family: wanted-font;
+  src: url(/assets/fonts/dirtyoldtown.ttf);
+}
+
+:root{
+  --text-color: rgb(92, 53, 6);
+
+  --text-placeholder-color: rgb(100, 69, 35);
+}
