@@ -1,5 +1,8 @@
 {
   "name": "skull-king-counter",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
