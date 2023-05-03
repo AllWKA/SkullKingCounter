@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="ion-padding border">
+  <div class="home-container">
     <p style="text-align: center" class="title">
       Skull King Counter
     </p>
@@ -8,15 +8,20 @@
       <img class="logo" src="../../assets/icon/skull.gif" alt="">
     </div>
 
-    <div class="row" style="margin-top:3%;">
-      <ion-input label="" type="number" [value]="numPlayers" (ionChange)="updateNumPlayers($event)">
-        <p style="margin-left: 23%">Number of Players </p>
-      </ion-input>
+    <div class="input-player-container">
+      <label for="numPlayersInput" class="input-player-label">Number of Players</label>
+
+      <input style="max-width: 20%; text-align: center"
+             id="numPlayersInput"
+             type="number"
+             [value]="numPlayers"
+             (change)="updateNumPlayers($event)"
+      />
 
       <p class="error-message" *ngIf="wrongNumPlayers">Invalid number of players <br> You need at least 2</p>
     </div>
 
-    <div class="row" style="text-align: center" (click)="start()">
+    <div style="text-align: center" (click)="start()">
       <img src="../../assets/icon/continuar.gif" alt="">
     </div>
   </div>
