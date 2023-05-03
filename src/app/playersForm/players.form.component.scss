@@ -51,14 +51,6 @@ ion-select::part(icon) {
   align-items: center;
 }
 
-.controls {
-  height: 10%;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 .header-form {
   height: 50%;
   width: 100%;
@@ -66,34 +58,6 @@ ion-select::part(icon) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.show-player {
-  animation: slide-away 150ms;
-  display: block;
-}
-
-.hide-player {
-  animation: slide-away 250ms;
-  display: none;
-}
-
-@keyframes slide-away {
-  from {
-    display: block;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slide-into {
-  from {
-    display: none;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 

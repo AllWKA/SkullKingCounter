@@ -1,5 +1,5 @@
-<ion-content fullscrean="true">
-  <ion-title class="title">Wanted</ion-title>
+<ion-content>
+  <h1 class="title">Wanted</h1>
 
   <div style="height: 80%; margin-top: 5%">
     <div style="height: 90%; transition: all 1s linear;"
@@ -7,7 +7,7 @@
          [ngClass]="showPlayer(i)?'show-player':'hide-player'"
     >
       <div class="header-form">
-        <div style="height: 100%; width: 100%">
+        <div style="width: 100%">
           <img src="{{'assets/icon/' + players[i].skin + '.gif'}}" alt="">
         </div>
 
@@ -21,16 +21,21 @@
       </div>
 
       <div class="name-container">
-        <ion-title class="dead-or-alive-section-text">
-          Dead or Alive
-        </ion-title>
+        <h2 class="dead-or-alive-section-text">Dead or Alive</h2>
 
-        <input class="dead-or-alive-section-text name-input" required="true" placeholder="name" type="text" (change)="setPlayerName($event, i)"/>
+        <input
+          class="dead-or-alive-section-text name-input"
+          required="true"
+          placeholder="name"
+          type="text"
+          (change)="setPlayerName($event, i)"
+        />
 
-        <ion-title class="dead-or-alive-section-text">
-          <ion-icon name="logo-yen"></ion-icon>
-          3000000
-        </ion-title>
+        <div class="dead-or-alive-section-text">
+          <p>3000000
+            <ion-icon name="logo-yen"></ion-icon>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -38,9 +43,11 @@
       <button (click)="nextPlayer()" style="height: 50px; width: 50px;background-color: transparent">
         <img src="/assets/icon/prev.svg" alt="">
       </button>
-      <button style="background-color: transparent; height: 100px; width: 100px;">
+
+      <button style="background-color: transparent; height: 100px; width: 100px;" (click)="continue()">
         <img src="/assets/icon/continuar.gif" alt="">
       </button>
+
       <button (click)="prevPlayer()" style="height: 50px; width: 50px;background-color: transparent">
         <img src="/assets/icon/next.svg" alt="">
       </button>

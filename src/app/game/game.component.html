@@ -1,0 +1,82 @@
+<ion-content>
+  <div class="game-container">
+    <div class="header-container">
+      <h1 class="title">Round: {{round}}</h1>
+    </div>
+
+    <div class="players-container">
+      <div
+        style="text-align: center"
+        *ngFor="let player, let i = index of players"
+        [ngClass]="showPlayer(i)?'show-player':'hide-player'"
+      >
+        <div>
+          <img src="{{'assets/icon/' + player.skin + '.gif'}}" alt="">
+        </div>
+
+        <h1>{{player.name}}</h1>
+
+        <p style="font-family: serif">Score: {{player.totalScore}}</p>
+
+        <div class="state-container">
+
+          <div class="input-container">
+            <label for="betInput">Rounds Bet:</label>
+
+            <input [(ngModel)]="player.bet" type="number" id="betInput"/>
+          </div>
+
+          <div class="input-container">
+            <label for="pointsInput">Rounds Won: </label>
+
+            <input [(ngModel)]="player.roundsWon" type="number" id="pointsInput"/>
+          </div>
+
+          <div class="input-container">
+            <label for="extraPointsInput">Extra Points: </label>
+
+            <input [(ngModel)]="player.extraPoints" type="number" id="extraPointsInput"/>
+
+            <!-- TODO: place icons to add extra points -->
+
+            <!--
+
+            Posibilities:
+
+              - mermaid kill pirate, max 6 ->
+              - skullking kill pirate, max 6
+
+          Result:
+
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button (click)="nextPlayer()" style="height: 50px; width: 50px;background-color: transparent">
+        <img src="/assets/icon/prev.svg" alt="">
+      </button>
+
+      <button (click)="passRound()" [disabled]="round>10">
+        <p>Next Round</p>
+      </button>
+
+      <button (click)="prevPlayer()" style="height: 50px; width: 50px;background-color: transparent">
+        <img src="/assets/icon/next.svg" alt="">
+      </button>
+    </div>
+
+    <div class="modal-container" *ngIf="showWinnerModal && winner != null">
+      <div class="modal" (click)="showWinnerModal=false">
+        <div>
+          <img src="{{'assets/icon/' + winner.skin + '.gif'}}" alt="">
+        </div>
+
+        <h1>{{winner.name}} Wins!!!!</h1>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

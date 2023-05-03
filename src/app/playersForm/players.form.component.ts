@@ -25,7 +25,16 @@ export class PlayersFormComponent implements OnInit {
     const players = this.config.numPlayers
 
     for (let player = 0; player < players; player++) {
-      this.players.push({name: '', skin: 'skull', points: 0})
+      const newPlayer = {
+        name: '',
+        skin: 'skull',
+        bet: 0,
+        totalScore: 0,
+        extraPoints: 0,
+        roundsWon: 0
+      }
+
+      this.players.push(newPlayer)
     }
   }
 

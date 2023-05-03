@@ -31,8 +31,51 @@
   src: url(/assets/fonts/dirtyoldtown.ttf);
 }
 
+ion-content {
+  --background: url("/assets/icon/fondo_menu.png");
+  --background-size: fill;
+  font-family: wanted-font;
+  text-align: center;
+}
+
 :root{
   --text-color: rgb(92, 53, 6);
 
   --text-placeholder-color: rgb(100, 69, 35);
+}
+
+.controls {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.show-player {
+  animation: slide-away 150ms;
+  display: block;
+}
+
+.hide-player {
+  animation: slide-away 250ms;
+  display: none;
+}
+
+@keyframes slide-away {
+  from {
+    display: block;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-into {
+  from {
+    display: none;
+  }
+  to {
+    opacity: 1;
+  }
 }

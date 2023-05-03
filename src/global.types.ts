@@ -1,5 +1,8 @@
 export interface Player {
   name: string,
   skin: string
-  points: number
+  bet: number,
+  roundsWon: number,
+  extraPoints:number,
+  totalScore: number
 }
