@@ -21,6 +21,8 @@ export class PlayersFormComponent implements OnInit {
 
   currentPlayerShown = 0
 
+  audio = new Audio()
+
   constructor(private route: ActivatedRoute, private config: ConfigService, private router: Router) {
     const players = this.config.numPlayers
 
@@ -39,6 +41,11 @@ export class PlayersFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.audio.src = "/assets/sounds/menu.mp3"
+
+    this.audio.load()
+
+    this.audio.play()
   }
 
   changeSkullPath(event: any, index: number) {
@@ -79,6 +86,8 @@ export class PlayersFormComponent implements OnInit {
 
   continue() {
     this.config.players = this.players
+
+    this.audio.pause()
 
     this.router.navigate(['game'])
   }
