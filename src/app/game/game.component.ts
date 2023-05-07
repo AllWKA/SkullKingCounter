@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Player} from "../../global.types";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {Player, RoundPlay} from "../../global.types";
+import {KeyValuePipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {IonicModule} from "@ionic/angular";
 import {ConfigService} from "../config.service";
 import {FormsModule} from "@angular/forms";
@@ -14,7 +14,8 @@ import {FormsModule} from "@angular/forms";
     IonicModule,
     NgClass,
     NgIf,
-    FormsModule
+    FormsModule,
+    KeyValuePipe
   ],
   standalone: true
 })
@@ -26,9 +27,13 @@ export class GameComponent implements OnInit {
 
   currentPlayerShown = 0
 
-  winner: Player | null = null;
+  winner: Player | null = null
 
   showWinnerModal = false
+
+  showScoreTable = false
+
+  rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   constructor(private config: ConfigService) {
     this.players = config.players
@@ -67,23 +72,39 @@ export class GameComponent implements OnInit {
 
   passRound() {
     for (const player of this.players) {
+      let newScore = 0
+
       if (player.bet > 0) {
+
         if (player.bet === player.roundsWon) {
-          player.totalScore += player.bet * 20
+          newScore += player.bet * 20
         } else {
-          player.totalScore -= Math.abs(player.bet - player.roundsWon) * 10
+          newScore -= Math.abs(player.bet - player.roundsWon) * 10
         }
+
       } else {
+
         if (player.bet === player.roundsWon) {
-          player.totalScore += this.round * 10
+          newScore += this.round * 10
         } else {
-          player.totalScore -= this.round * 10
+          newScore -= this.round * 10
         }
+
       }
 
       if (player.bet === player.roundsWon) {
-        player.totalScore += player.extraPoints
+        newScore += player.extraPoints
       }
+
+      const roundPlay: RoundPlay = {
+        bet: player.bet,
+        won: player.roundsWon,
+        extra: player.extraPoints,
+        roundPoints: newScore
+      }
+
+      player.totalScore += newScore
+      player.scoreRound.set(this.round, roundPlay)
 
       player.bet = 0
       player.roundsWon = 0

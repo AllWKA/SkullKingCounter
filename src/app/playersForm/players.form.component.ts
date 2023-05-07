@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IonicModule} from '@ionic/angular';
 import {NgClass, NgForOf} from "@angular/common";
 import {ActivatedRoute, Router} from '@angular/router'
-import {Player} from "../../global.types";
+import {Player, RoundPlay} from "../../global.types";
 import {ConfigService} from "../config.service";
 
 
@@ -27,13 +27,14 @@ export class PlayersFormComponent implements OnInit {
     const players = this.config.numPlayers
 
     for (let player = 0; player < players; player++) {
-      const newPlayer = {
+      const newPlayer: Player = {
         name: '',
         skin: 'skull',
         bet: 0,
         totalScore: 0,
         extraPoints: 0,
-        roundsWon: 0
+        roundsWon: 0,
+        scoreRound: new Map<number, RoundPlay>()
       }
 
       this.players.push(newPlayer)
