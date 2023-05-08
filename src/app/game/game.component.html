@@ -83,37 +83,56 @@
     </div>
 
     <div class="modal-container" *ngIf="showScoreTable">
-      <div
-        style="width: 100%; height: 99%; display: flex; flex-direction: column; justify-content: flex-start; overflow: scroll"
-        (click)="showScoreTable = false">
-
-        <table style="height: 100%; border: 1px solid white">
+      <div class="score-table-container" (click)="showScoreTable = false">
+        <table class="score-table">
           <!-- HEADERS  -->
-          <tr style="border: 1px solid white">
-            <td style="border: 1px solid white;min-width: 100px;">Ronda</td>
+          <tr>
+            <td>
+              <p>
+                Ronda
+              </p>
+            </td>
 
-            <td *ngFor="let round of rounds" style="border: 1px solid white;min-width: 100px;">
-              {{round}}
+            <td *ngFor="let round of rounds" style="min-width: 100px">
+              <p>
+                {{round}}
+              </p>
             </td>
           </tr>
 
           <!-- ROWS -->
 
-          <tr *ngFor="let player of players" style="border: 1px solid white">
-            <td>{{player.name}}</td>
+          <tr *ngFor="let player of players">
+            <td>
+              <p>
+                {{player.name}}
+              </p>
+            </td>
 
-            <td *ngFor="let round of player.scoreRound | keyvalue" style="border: 1px solid white">
-              <div style="min-width: 100px; text-align: start; display: flex; justify-content: center">
-                Bet: {{round.value.bet}}</div>
+            <td *ngFor="let round of player.scoreRound | keyvalue" style="border: 1px solid black">
+              <div class="round-play-section" style="margin-top: 3%">
+                <p>
+                  Bet: {{round.value.bet}}
+                </p>
+              </div>
 
-              <div style="min-width: 100px; text-align: start; display: flex; justify-content: center">
-                Won: {{round.value.won}}</div>
+              <div class="round-play-section">
+                <p>
+                  Won: {{round.value.won}}
+                </p>
+              </div>
 
-              <div style="min-width: 100px; text-align: start; display: flex; justify-content: center">
-                Extra: {{round.value.extra}}</div>
+              <div class="round-play-section">
+                <p>
+                  Extra: {{round.value.extra}}
+                </p>
+              </div>
 
-              <div
-                style="min-width: 100px; text-align: start; display: flex; justify-content: center;border-top: 1px solid white">{{round.value.roundPoints}}</div>
+              <div class="round-play-section" style="border-top: 1px solid black; margin-bottom: 3%">
+                <p>
+                  {{round.value.roundPoints}}
+                </p>
+              </div>
             </td>
           </tr>
         </table>

@@ -11,9 +11,11 @@
     <div class="input-player-container">
       <label for="numPlayersInput" class="input-player-label">Number of Players</label>
 
-      <input style="max-width: 20%; text-align: center"
+      <input class="num-player-input"
              id="numPlayersInput"
              type="number"
+             max="6"
+             min="2"
              [value]="numPlayers"
              (change)="updateNumPlayers($event)"
       />

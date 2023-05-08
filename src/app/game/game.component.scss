@@ -58,12 +58,44 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgb(181, 152, 54);
   position: absolute;
 }
 
 .modal {
   width: 50%;
   height: 50%;
+}
 
+.score-table-container {
+  width: 100%;
+  height: 99%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: scroll;
+}
+
+.score-table {
+  border: 2px solid black;
+}
+
+.score-table td {
+  border: 2px solid black;
+  min-width: 100px;
+}
+
+.score-table tr {
+  border: 2px solid black;
+}
+
+.score-table p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.round-play-section {
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
 }
