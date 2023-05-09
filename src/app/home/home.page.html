@@ -15,15 +15,15 @@
              id="numPlayersInput"
              type="number"
              max="6"
-             min="2"
              [value]="numPlayers"
              (change)="updateNumPlayers($event)"
       />
 
-      <p class="error-message" *ngIf="wrongNumPlayers">Invalid number of players <br> You need at least 2</p>
     </div>
 
-    <div style="text-align: center" (click)="start()">
+    <p class="error-message" *ngIf="wrongNumPlayers">Invalid number of players <br> You need at least 2 and less than 6</p>
+
+    <div id="continueButton" (click)="start()">
       <img src="../../assets/icon/continuar.gif" alt="">
     </div>
   </div>
