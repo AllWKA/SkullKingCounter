@@ -1,11 +1,15 @@
 <ion-content>
-  <div style="position: absolute;margin-top: 5px; margin-left: 5px">
-    <img src="/assets/icon/table_chart.svg" alt="score_table" (click)="showScoreTable = true">
-  </div>
-
   <div class="game-container">
     <div class="header-container">
+      <div style="width: 20%">
+        <img src="/assets/icon/table_chart.svg" alt="score_table" (click)="showScoreTable = true">
+      </div>
+
       <h1 class="title">Round: {{round}}</h1>
+
+      <div style="width: 20%" (click)="showExitConfirm = true">
+        <img src="/assets/icon/close.svg" alt="main-menu">
+      </div>
     </div>
 
     <div class="players-container">
@@ -15,31 +19,32 @@
         [ngClass]="showPlayer(i)?'show-player':'hide-player'"
       >
         <div>
-          <img src="{{'assets/icon/' + player.skin + '.gif'}}" alt="">
+          <img src="{{'assets/avatar/' + player.skin + '.png'}}" alt="">
         </div>
 
-        <h1>{{player.name}}</h1>
+        <h1 style="color:var(--text-color);">{{player.name}}</h1>
 
-        <p style="font-family: serif">Score: {{player.totalScore}}</p>
+        <p style="font-weight:bold; font-family: serif; color: var(--text-color);font-size: 20px">
+          Score: {{player.totalScore}}</p>
 
         <div class="state-container">
 
           <div class="input-container">
             <label for="betInput">Rounds Bet:</label>
 
-            <input [(ngModel)]="player.bet" type="number" id="betInput"/>
+            <input [(ngModel)]="player.bet" type="number" id="betInput" onfocus="this.value=''"/>
           </div>
 
           <div class="input-container">
             <label for="pointsInput">Rounds Won: </label>
 
-            <input [(ngModel)]="player.roundsWon" type="number" id="pointsInput"/>
+            <input [(ngModel)]="player.roundsWon" type="number" id="pointsInput" onfocus="this.value=''"/>
           </div>
 
           <div class="input-container">
             <label for="extraPointsInput">Extra Points: </label>
 
-            <input [(ngModel)]="player.extraPoints" type="number" id="extraPointsInput"/>
+            <input [(ngModel)]="player.extraPoints" type="number" id="extraPointsInput" onfocus="this.value=''"/>
 
             <!-- TODO: place icons to add extra points -->
 
@@ -63,8 +68,8 @@
         <img src="/assets/icon/prev.svg" alt="">
       </button>
 
-      <button (click)="passRound()" [disabled]="round>10">
-        <p>Next Round</p>
+      <button style="background: transparent; color: var(--text-color)" (click)="passRound()" [disabled]="round>10">
+        <p style="font-size: 20px">Next Round</p>
       </button>
 
       <button (click)="prevPlayer()" style="height: 50px; width: 50px;background-color: transparent">
@@ -72,17 +77,25 @@
       </button>
     </div>
 
+    <!-- Winner -->
     <div class="modal-container" *ngIf="showWinnerModal && winner != null">
-      <div class="modal" (click)="showWinnerModal=false">
-        <div>
-          <img src="{{'assets/icon/' + winner.skin + '.gif'}}" alt="">
+      <div class="win-modal" (click)="showWinnerModal=false">
+        <div style="width: 100%;display: flex; justify-content: center;align-items: center;height: 80%">
+          <img style="width: 100%" src="{{'assets/avatar/' + winner.skin + '.png'}}" alt="">
         </div>
 
-        <h1>{{winner.name}} Wins!!!!</h1>
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center">
+          <h1 style="color: var(--text-color)">{{winner.name}}</h1>
+
+          <h2 style="color: var(--text-color)">Wins</h2>
+        </div>
       </div>
     </div>
 
+    <!-- Score Table -->
     <div class="modal-container" *ngIf="showScoreTable">
+      <h1 style="color: var(--text-color)">Score Table</h1>
+
       <div class="score-table-container" (click)="showScoreTable = false">
         <table class="score-table">
           <!-- HEADERS  -->
@@ -139,5 +152,19 @@
       </div>
     </div>
 
+    <!-- Confirm Exit -->
+    <div class="modal-container" *ngIf="showExitConfirm">
+      <div class="confirm-exit-modal-container">
+        <h3>Do you want to exit?</h3>
+
+        <div style="width: 100%; display: flex; justify-content: space-around; align-items: center">
+          <button style="background: transparent; color: var(--text-color)" (click)="navigateToMainMenu()">Confirm
+          </button>
+
+          <button style="background: transparent; color: var(--text-color)" (click)="showExitConfirm=false">Close
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

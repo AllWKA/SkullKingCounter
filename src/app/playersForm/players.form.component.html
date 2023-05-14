@@ -8,11 +8,11 @@
     >
       <div class="header-form">
         <div style="width: 100%">
-          <img src="{{'assets/icon/' + players[i].skin + '.gif'}}" alt="">
+          <img src="{{'/assets/avatar/' + players[i].skin + '.png'}}" alt="">
         </div>
 
         <div style="max-width: 90%">
-          <ion-select interface="popover" class="character-select" label="" (ionChange)="changeSkullPath($event, i)">
+          <ion-select interface="popover" class="character-select" placeholder="Choose pirate" (ionChange)="changeSkullPath($event, i)">
             <ion-select-option *ngFor="let skull of skulls">
               <ion-item>{{skull}}</ion-item>
             </ion-select-option>
@@ -44,7 +44,7 @@
         <img src="/assets/icon/prev.svg" alt="">
       </button>
 
-      <button style="background-color: transparent; height: 100px; width: 100px;" (click)="continue()">
+      <button style="background-color: transparent;width: 300px;" (click)="continue()">
         <img src="/assets/icon/continuar.gif" alt="">
       </button>
 

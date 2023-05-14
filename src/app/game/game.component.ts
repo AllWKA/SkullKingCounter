@@ -4,6 +4,7 @@ import {KeyValuePipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {IonicModule} from "@ionic/angular";
 import {ConfigService} from "../config.service";
 import {FormsModule} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-game',
@@ -33,9 +34,11 @@ export class GameComponent implements OnInit {
 
   showScoreTable = false
 
+  showExitConfirm = false
+
   rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  constructor(private config: ConfigService) {
+  constructor(private router: Router, private config: ConfigService) {
     this.players = config.players
   }
 
@@ -96,14 +99,15 @@ export class GameComponent implements OnInit {
         newScore += player.extraPoints
       }
 
+      player.totalScore += newScore + player.extraPoints
+
       const roundPlay: RoundPlay = {
         bet: player.bet,
         won: player.roundsWon,
         extra: player.extraPoints,
-        roundPoints: newScore
+        roundPoints: player.totalScore
       }
 
-      player.totalScore += newScore
       player.scoreRound.set(this.round, roundPlay)
 
       player.bet = 0
@@ -126,12 +130,16 @@ export class GameComponent implements OnInit {
 
       this.showWinnerModal = true
 
-      console.log('winner:' + this.winner.name)
-
-      console.log(this.players)
-
     } else {
       this.round++
     }
+  }
+
+  navigateToMainMenu() {
+    this.config.reset()
+
+    this.showExitConfirm = false
+
+    this.router.navigate(['/'])
   }
 }

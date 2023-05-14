@@ -38,7 +38,11 @@ ion-content {
   text-align: center;
 }
 
-:root{
+img {
+  width: 50%;
+}
+
+:root {
   --text-color: rgb(92, 53, 6);
 
   --text-placeholder-color: rgb(100, 69, 35);

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicModule} from '@ionic/angular';
 import {NgClass, NgForOf} from "@angular/common";
-import {ActivatedRoute, Router} from '@angular/router'
+import {Router} from '@angular/router'
 import {Player, RoundPlay} from "../../global.types";
 import {ConfigService} from "../config.service";
 
@@ -15,7 +15,7 @@ import {ConfigService} from "../config.service";
 })
 export class PlayersFormComponent implements OnInit {
 
-  skulls = ['skull', 'skull-black&white', 'skull-bluelight']
+  skulls = ['Calavera-Base', 'Betty-Brave', 'Harry-El-Gigante', 'Scary-Mary', 'Sirena', 'Skull-King', 'Tortuga-Jack']
 
   players: Array<Player> = []
 
@@ -23,13 +23,13 @@ export class PlayersFormComponent implements OnInit {
 
   audio = new Audio()
 
-  constructor(private route: ActivatedRoute, private config: ConfigService, private router: Router) {
+  constructor(private config: ConfigService, private router: Router) {
     const players = this.config.numPlayers
 
     for (let player = 0; player < players; player++) {
       const newPlayer: Player = {
         name: '',
-        skin: 'skull',
+        skin: 'Skull-King',
         bet: 0,
         totalScore: 0,
         extraPoints: 0,

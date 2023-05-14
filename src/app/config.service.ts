@@ -6,10 +6,16 @@ import {Player} from "../global.types";
 })
 export class ConfigService {
 
-  numPlayers = 32
+  numPlayers = 2
 
   players: Array<Player> = []
 
   constructor() {
+  }
+
+  reset(){
+    this.numPlayers = 2
+
+    this.players = []
   }
 }

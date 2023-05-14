@@ -4,12 +4,12 @@
       Skull King Counter
     </p>
 
-    <div class="row" style="text-align: center">
-      <img class="logo" src="../../assets/icon/skull.gif" alt="">
+    <div class="img-container">
+      <img style="width: 100%" src="../../assets/avatar/Harry-El-Gigante.png" alt="">
     </div>
 
     <div class="input-player-container">
-      <label for="numPlayersInput" class="input-player-label">Number of Players</label>
+      <label for="numPlayersInput" class="input-player-label">Players</label>
 
       <input class="num-player-input"
              id="numPlayersInput"
@@ -21,7 +21,9 @@
 
     </div>
 
-    <p class="error-message" *ngIf="wrongNumPlayers">Invalid number of players <br> You need at least 2 and less than 6</p>
+    <p class="error-message" *ngIf="wrongNumPlayers">
+      Invalid number of players <br> You need at least 2 and less than 6
+    </p>
 
     <div id="continueButton" (click)="start()">
       <img src="../../assets/icon/continuar.gif" alt="">

@@ -9,12 +9,6 @@ ion-button {
   color: rgb(85, 69, 49);
 }
 
-img {
-  max-width: 70%;
-  max-height: 70%;
-  background-size: cover;
-}
-
 .error-message {
   font-size: 10px;
   text-align: center;
@@ -28,9 +22,13 @@ img {
   color: var(--text-color);
 }
 
-.logo {
-  max-width: 110%;
-  max-height: 110%;
+.img-container {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .home-container {
