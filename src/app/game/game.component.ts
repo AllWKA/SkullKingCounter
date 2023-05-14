@@ -38,11 +38,18 @@ export class GameComponent implements OnInit {
 
   rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+  audio = new Audio()
+
   constructor(private router: Router, private config: ConfigService) {
     this.players = config.players
   }
 
   ngOnInit() {
+    this.audio.src = "/assets/sounds/menu.mp3"
+
+    this.audio.load()
+
+    this.audio.play()
   }
 
   nextPlayer() {
