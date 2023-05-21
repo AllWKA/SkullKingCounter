@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'https://github.com/AllWKA',
+  appId: 'github.com.AllWKA',
   appName: 'Skull King Counter',
   webDir: 'www',
   server: {

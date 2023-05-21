@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Skull King Counter</name>
-    <description>App to count point for the board game Skull King</description>
-    <author email="bryanjaramillobaldeon@gmail.com" href="http://ionicframework.com/">AllWKa</author>
+    <description>Automatic calculate points for the board game Skull King</description>
+    <author email="bryanjaramillobaldeon@gmail.com" href="bryanjaramillobaldeon@gmail.com">AllWKa</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

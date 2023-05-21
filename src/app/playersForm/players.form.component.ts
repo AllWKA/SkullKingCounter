@@ -15,7 +15,7 @@ import {ConfigService} from "../config.service";
 })
 export class PlayersFormComponent implements OnInit {
 
-  skulls = ['Calavera-Base', 'Betty-Brave', 'Harry-El-Gigante', 'Scary-Mary', 'Sirena', 'Skull-King', 'Tortuga-Jack']
+  skulls = ['Asherah', 'Betty Brave', 'Harry El Gigante', 'Scary Mary', 'Black Bill The Feared', 'Silvera Snake-Eyes', 'Captain Silver-Tongue']
 
   players: Array<Player> = []
 
@@ -27,7 +27,7 @@ export class PlayersFormComponent implements OnInit {
     for (let player = 0; player < players; player++) {
       const newPlayer: Player = {
         name: '',
-        skin: 'Skull-King',
+        skin: 'Asherah',
         bet: 0,
         totalScore: 0,
         extraPoints: 0,
